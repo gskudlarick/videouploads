@@ -1,0 +1,84 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+     <title>VZ Video Demo</title>
+
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> </link>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+
+
+    <body>
+    <nav  class="navbar navbar-inverse ">
+       <div  class="container-fluid">
+         <div  class="navbar-header">
+           <a href="/home" class="navbar-brand active" style="cursor:pointer; text-transform:Capatilize;"><span class="glyphicon glyphicon-film"></span> Video Uploads Demo</a>
+         </div>
+         
+         <div  class="navbar-default">
+           <ul  class="nav navbar-nav">
+             <li><a > <span class="glyphicon glyphicon-wrench"></span>  Admin &amp; Test</a></li>
+             <li><a href="/upload"> <span class="glyphicon glyphicon-upload"></span> Upload </a></li>
+             <li><a ><span class="glyphicon glyphicon-hd-video"></span> Content</a></li>
+             <li><a href="http://localhost:4200/admin"  target="_blank"><span class="glyphicon glyphicon-link"></span> Angular Client</a></li>
+           </ul>
+     
+       
+    <div th:switch="${#httpServletRequest.remoteUser}"> 
+                    <form th:case="null"  th:action="@{/login}" method="post"  class="navbar-form navbar-right">
+             <div  class="form-group">
+               <input  class="form-control" placeholder="Username" name="username" type="text"></input>
+             </div>
+             <div  class="form-group">
+               <input  class="form-control" placeholder="Password" type="password" name="password"></input>
+             </div>
+      <!--        <button  class="btn btn-success" type="button">Sign in</button> -->
+       <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-log-in"></span> Login </button>
+    <!--   <a href="/login" class="btn btn-success" role="button">Link Button</a> -->
+           </form>
+           
+           <form id="form1" th:case="*" th:action="@{/logout}" method="post"  class="navbar-form navbar-right">
+      <!--        <button  class="btn btn-success" type="button">Sign in</button> -->
+      
+      <!--  
+      <button  style="text-transform: uppercase;" th:inline="text" type="button" class="btn btn-primary ">
+          <span  class="glyphicon glyphicon-user"></span>   [[${#httpServletRequest.remoteUser}]] 
+        </button>-->
+       <button  type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-log-out"></span>  Logout </button> 
+
+    <!--   <a href="/login" class="btn btn-success" role="button">Link Button</a> -->
+           </form>
+    
+  
+           
+                <ul th:if="${#httpServletRequest.remoteUser}" class="nav navbar-nav navbar-right">
+      <li style="text-transform: capitalize;" th:inline="text"><a href="#"><span class="glyphicon glyphicon-user"></span> [[${#httpServletRequest.remoteUser}]]</a></li>
+    </ul> 
+           
+         
+
+           </div>
+     
+     
+         </div>
+     
+     
+       </div>
+     </nav>
+    <div style="margin:auto;width:600px">
+
+    
+     <h1>Error Page</h1>
+  <p>Application has encountered an error. Please contact support ...</p>
+  	<h3>
+			Click <a th:href="@{/home}">here</a> to return to Home Page.
+		</h3>
+		
+	    </div>
+
+  
+
+    </body>
+</html>

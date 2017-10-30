@@ -1,0 +1,123 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+     <title>VZ Video Demo</title>
+
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> </link>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+    <body>
+    
+ <nav  class="navbar navbar-inverse ">
+       <div  class="container-fluid">
+         <div  class="navbar-header">
+           <a href="/home" class="navbar-brand active" style="cursor:pointer; text-transform:Capatilize;"><span class="glyphicon glyphicon-film"></span> Video Uploads Demo</a>
+         </div>
+         
+         <div  class="navbar-default">
+           <ul  class="nav navbar-nav">
+             <li><a > <span class="glyphicon glyphicon-wrench"></span>  Admin &amp; Test</a></li>
+             <li><a href="/upload"> <span class="glyphicon glyphicon-upload"></span> Upload </a></li>
+             <li><a ><span class="glyphicon glyphicon-hd-video"></span> Content</a></li>
+             <li><a  href="http://159.203.192.45/vz"   target="_blank"><span class="glyphicon glyphicon-link"></span> Angular Client</a></li>
+           </ul>
+     
+       
+    <div th:switch="${#httpServletRequest.remoteUser}"> 
+                    <form th:case="null"  th:action="@{/login}" method="post"  class="navbar-form navbar-right">
+             <div  class="form-group">
+               <input  class="form-control" placeholder="Username" name="username" type="text"></input>
+             </div>
+             <div  class="form-group">
+               <input  class="form-control" placeholder="Password" type="password" name="password"></input>
+             </div>
+      <!--        <button  class="btn btn-success" type="button">Sign in</button> -->
+       <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-log-in"></span> Login </button>
+    <!--   <a href="/login" class="btn btn-success" role="button">Link Button</a> -->
+           </form>
+           
+           <form id="form1" th:case="*" th:action="@{/logout}" method="post"  class="navbar-form navbar-right">
+      <!--        <button  class="btn btn-success" type="button">Sign in</button> -->
+      
+      <!--  
+      <button  style="text-transform: uppercase;" th:inline="text" type="button" class="btn btn-primary ">
+          <span  class="glyphicon glyphicon-user"></span>   [[${#httpServletRequest.remoteUser}]] 
+        </button>-->
+       <button  type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-log-out"></span>  Logout </button> 
+
+    <!--   <a href="/login" class="btn btn-success" role="button">Link Button</a> -->
+           </form>
+    
+  
+           
+                <ul th:if="${#httpServletRequest.remoteUser}" class="nav navbar-nav navbar-right">
+      <li style="text-transform: capitalize;" th:inline="text"><a href="#"><span class="glyphicon glyphicon-user"></span> [[${#httpServletRequest.remoteUser}]]</a></li>
+    </ul> 
+           
+         
+
+           </div>
+     
+     
+         </div>
+     
+     
+       </div>
+     </nav>
+     <div style="margin:auto; width:800px;">
+     <h4 style="text-align:center">Working to Connect Uploaded Videos to the Player </h4>
+     
+     
+     
+     
+     
+  
+           <video id="video" controls="" preload="none" poster="https://media.w3.org/2010/05/sintel/poster.png">
+             <!--
+               <source id='mp4'
+               src="../sintel/trailer.mp4"
+               type='video/mp4'>
+               <source id='webm'
+               src="../sintel/trailer.webm"
+               type='video/webm'>
+             -->
+        
+              <source id="mp4" src="https://media.w3.org/2010/05/sintel/trailer.mp4" type="video/mp4">  </source>
+               <source id="webm" src="https://media.w3.org/2010/05/sintel/trailer.webm" type="video/webm">   </source>
+                 <source id="ogv" src="https://media.w3.org/2010/05/sintel/trailer.ogv" type="video/ogg">   </source>
+     
+                   <p>Your user agent does not support the HTML5 Video element.</p>
+           </video>
+           
+             <h4 style="text-align:center">VideoJS Player has Plugin to test Thumbnail scrubbing. </h4>
+           
+           </div>
+     
+     
+     
+     
+     
+     
+     
+    <!-- 
+    <h3 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h3>
+
+    
+       
+        
+        <div th:switch="${#httpServletRequest.remoteUser}"> 
+         <p th:case="null">null not logged in</p>
+          <p th:case="*">Hi dude 
+            <span th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</span>
+          
+          </p> 
+        </div>
+        
+        
+        <p>Click <a th:href="@{/hello}">here</a> to see a Secure USER greeting.</p>
+        <p>Click <a th:href="@{/upload}">here</a> to see a Secure ADMIN upload.</p>
+        <p>Click <a th:href="@{/dummy}">here</a> to see a Non Secure Video Player.</p>
+        -->
+    </body>
+</html>
