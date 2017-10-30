@@ -1,1 +1,0 @@
-INSERT INTO `video` ( `author`, `create_date`, `media_url`, `meta_data`, `modify_date`, `sprite_json_url`, `sprite_url`, `thumb_url`, `upload_date`) VALUES ('Omega', '2017-10-03 00:00:00', 'alpha', 'beta', NULL, NULL, NULL, NULL, NULL);
