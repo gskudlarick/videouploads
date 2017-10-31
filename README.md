@@ -35,7 +35,7 @@
     * implement callback method to get  % from Restpoint
     * Update the % on a bootstrap DOM progress bar element.
     * Try the newer XHR. ProgressEvent onProgress() and see what kind of data it sends back for multi-part
- - [ ] **Figure out how to Stream the File Upload multi-part Stream to the ffprobe input**
+ - [ ] **Figure out how to pipe the File Upload multi-part Stream to the ffprobe input**
   * This way we don't have to Upload the file to run ffprobe and get the duration info.
     * Shortcut would be to limit file size using **spring.http.multipart.max-request-size=128MB**
    * Break out the FileUpload Steam to somehow write to thie new Stream opened by ffprobe
