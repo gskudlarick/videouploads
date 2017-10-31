@@ -2,7 +2,6 @@
 
 
 /target/**
-.classpath
 .project
 .settings/
 .maven/
