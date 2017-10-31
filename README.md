@@ -28,7 +28,7 @@ To Build and Run the project
  
  ## Features to Implement
  - [x] **Clean UI with bootstrap**
- - [ ] Add Progress Bar.
+ - [ ] **Add File Upload Progress Bar** *Technique: Add 2nd Servlet/Rest Client with Progress info for Ajax Calls*
   * Use Apache Commons FileUpload package
   * Implement ProgressListener and override update() with a  HttpSession attribute with the status %
   * Create a new Rest endpoint to return the % value in the HttpSession attribute
