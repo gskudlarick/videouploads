@@ -41,7 +41,7 @@
  - [ ] **Figure out how to pipe the File Upload multi-part Stream to the ffprobe input**
   * This way we don't have to Upload the file to run ffprobe and get the duration info.
     * Shortcut would be to limit file size using **spring.http.multipart.max-request-size=128MB**
-   * Break out the FileUpload Steam to somehow write to thie new Stream opened by ffprobe
+   * Break out the FileUpload Steam to somehow write to this new Stream opened by ffprobe
    * Figure out how to  configure ffprobe to read from a STDIN File Descripter, and get Java to wrote to it.
   - [ ] **Add swagger Documentation, and JavaDoc**
  - [ ] **Update Security**
