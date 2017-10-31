@@ -8,7 +8,8 @@
 * **Server Side Rendering** - http://159.203.192.45:8080/
 * **username/password** - *api  api100*
 * **Angular Client**- http://159.203.192.45/vz/ 
-* **UPLOADED ASSETS** -   https://exsracing.com/vz/ASSETS/ *My DigitalOcean Server. Didnt' have tiem to set up AWS S3*
+* **UPLOADED ASSETS** -   https://exsracing.com/vz/ASSETS/  https://exsracing.com/vz/ASSETS/HLS/
+  * My DigitalOcean Server. I Didnt'have tiem to set up AWS S3*
 
 
 ## To Build and Run the project
