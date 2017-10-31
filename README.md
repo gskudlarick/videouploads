@@ -7,8 +7,8 @@
 
 * **Server Side Rendering** - http://159.203.192.45:8080/
 * **username/password** - *api  api100*
-* **Angular Client**- http://159.203.192.45/vz/
-* **UPLOADED ASSETS** -   https://exsracing.com/vz/ASSETS/
+* **Angular Client**- http://159.203.192.45/vz/ 
+* **UPLOADED ASSETS** -   https://exsracing.com/vz/ASSETS/ *My DigitalOcean Server. Didnt' have tiem to set up AWS S3*
 
 
 ## To Build and Run the project
@@ -42,10 +42,10 @@
    * Figure out how to  configure ffprobe to read from a STDIN File Descripter, and get Java to wrote to it.
   - [ ] **Add swagger Documentation, and JavaDoc**
  - [ ] **Update Security**
-    * Currrently uses Basic Authentication.  Modify to form based using JWT tokens
+    * Currrently uses Basic Authentication.  Modify to use form based using JWT tokens
      * Currently does not encrypt password. Add Login Form and use Use *BCryptPasswordEncoder()*.
      * Update code in *WebSecurityConfig* to update  *config(HttpSecurity)...* and *CorsFilter.java*
-     * Test and ensure CORS, CSRF working locked down for Rest Clients.  
+     * Test and ensure CORS, CSRF working and locked down for Rest Clients.  
  - [ ] **Update UI Video Player to Play Uploaded Videos and Thumbs**
    * I Customized the json output from the transcoding process to work with videojs-thumbnails plugin. https://www.npmjs.com/package/videojs-thumbnails
    * e.g. https://exsracing.com/vz/ASSETS/trailer_thumbs.json
