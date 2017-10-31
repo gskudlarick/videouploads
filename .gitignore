@@ -1,5 +1,9 @@
+.DS_Store
+
+
 /target/**
-classpath
+.classpath
 .project
 .settings/
+.maven/
 target/
