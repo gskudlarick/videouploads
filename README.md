@@ -30,6 +30,8 @@
  
  ## Features to Implement
  - [x] **Clean UI with bootstrap**
+  - [ ] **Refactor Java Code**
+   * Re- Organize File Structure.  Make File Copy into Reusable Service,  Add Proptreis for Messages.
  - [ ] **Add File Upload Progress Bar** *Technique: Add 2nd Servlet/Rest Client with Progress info for Ajax Calls*
   * Use Apache Commons FileUpload package
   * Implement ProgressListener and override update() with a  HttpSession attribute with the status %
