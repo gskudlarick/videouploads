@@ -33,10 +33,12 @@ To Build and Run the project
   * Implement ProgressListener and override update() with a  HttpSession attribute with the status %
   * Create a new Rest endpoint to return the % value in the HttpSession attribute
   * Create a JavaScript XMLHttpRequest ajax call on window.setInterva(2000)
-    * implement callback method method to get  % from Restpoint
+    * implement callback method to get  % from Restpoint
     * Update the % on a bootstrap DOM progress bar element.
     * Try the newer XHR. ProgressEvent onProgress() and see what kind of data it sends back for multi-part
  - [ ] **Figure out how to Stream the File Upload multi-part Stream to the ffprobe input**
+  * This way we don't have to Upload the file to run ffprobe and get the duration info.
+    * Shortcut would be to limit file size using **spring.http.multipart.max-request-size=128MB**
    * Break out the FileUpload Steam to somehow write to thie new Stream opened by ffprobe
    * Figure out how to  configure ffprobe to read from a STDIN File Descripter, and get Java to wrote to it.
   - [ ] **Add swagger Documentation, and JavaDoc**
