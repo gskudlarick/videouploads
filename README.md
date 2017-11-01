@@ -6,7 +6,7 @@
 
 
 * **Server Side Rendering** - [Spring Boot Server App Login Page](http://159.203.192.45:8080/) 
-  * Basic thymeleaf html to show functionality But Prefer SPA (single page app) when time permits.
+  * Basic thymeleaf html to show functionality. But Prefer SPA (single page app) when time permits as Server Side rendering skills are a little rusty.  Been doing mostly SPA lately  w/ JQuery/Ajax, Angular, Knockout and React.
   * **username/password** - *api  api100*
 * **Angular Client**-  [Angular 2 API Rest Client](http://159.203.192.45/vz/ )
   * Beginning of SPI.  Will update when time permits.  Specifically:  Create [VideoJS](https://github.com/videojs/video.js) player to play the uploaded assets.
