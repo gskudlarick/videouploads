@@ -33,13 +33,28 @@
   - [ ] **Refactor Java Code**
    * Re- Organize File Structure.  Make File Copy into Reusable Service,  Add Proptreis for Messages.
  - [ ] **Add File Upload Progress Bar** *Technique: Add 2nd Servlet/Rest Client with Progress info for Ajax Calls*
-  * Use Apache Commons FileUpload package
-  * Implement ProgressListener and override update() with a  HttpSession attribute with the status %
-  * Create a new Rest endpoint to return the % value in the HttpSession attribute
-  * Create a JavaScript XMLHttpRequest ajax call on window.setInterva(2000)
+  * **Technique 1 Progress Endpoint** Implement ProgressListener and override update() with a  HttpSession attribute with the status %
+    * Use Apache Commons FileUpload package
+    * Create a new Rest endpoint to return the % value in the HttpSession attribute
+    * Create a JavaScript XMLHttpRequest ajax call on window.setInterva(2000)
     * implement callback method to get  % from Restpoint
     * Update the % on a bootstrap DOM progress bar element.
     * Try the newer XHR. ProgressEvent onProgress() and see what kind of data it sends back for multi-part
+  * **Technique 2 Web Sockets** Use Java API for WebSocket (JSR 356) to communicate with JavaScript Client Pop up
+    * Similar to chat implementation.  Use JavaScript WebSockets Api on client side.  Jquery Popup, or Angular.
+ * **Technique 3 Job/Workflow Service** Create Data driven Job Service.  
+    *  **Scales for large jobs**, which can run in background,  then update client via status (email, txt, websocket etc.) 
+    * Server updates jobs_tbl, and workflow_table in DB.  Uses workflow_id, job_id.
+    * File Upload Controller creates a new job for Video Prcessing.
+    * File Upload Controler creates a Workflow with the following steps:  
+      1.  file upload 
+      2.  ffprobe get file status 
+      3.  thumbs generation  
+      4.  poster generation
+      5.  HLS processing
+    * Server updates status via WebSocket API
+    * Client uses Javascript WebSockets API, and updaet widget, with progress bars for each step in the workflow
+    
  - [ ] **Figure out how to pipe the File Upload multi-part Stream to the ffprobe input**
   * This way we don't have to Upload the file to run ffprobe and get the duration info.
     * Shortcut would be to limit file size using **spring.http.multipart.max-request-size=128MB**
