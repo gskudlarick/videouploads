@@ -16,7 +16,7 @@
 
 ## To Build and Run the project
 
-* Basic Technique used for creating Repo in Root.
+* In a terminal window:.
 ``` sh
   >mkdir my-proj
   >git clone  https://github.com/gskudlarick/videouploads.git
