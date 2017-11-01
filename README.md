@@ -49,8 +49,12 @@
  
  ## Features to Implement
  - [x] **Clean UI with bootstrap**
+  - [ ] **Use MP4Box to package as MPD and update video js player with videojs-contrib-dash to play DASH**
+  * Install MP4Box, and add to the transcoding pipeline.  e.g. Add DashProcessor.java to the [VideoProcessing Service](https://github.com/gskudlarick/videouploads/tree/master/src/main/java/com/ges/video/service/videoprocessing), and call from the [FileUploadController.java](https://github.com/gskudlarick/videouploads/blob/master/src/main/java/com/ges/video/view/mvc/FileUploadController.java).  **(Re-factor as we add more services).**
+  * Update the test [VideoJS](https://github.com/videojs/video.js) player with a plugin to play MPEG-DASH content. [MPEG-DASH Source Handle](https://github.com/videojs/videojs-contrib-dash)
+  * Add [HLS Plugin](https://github.com/videojs/videojs-contrib-hls) to Video Player.
   - [ ] **Refactor Java Code**
-   * Re- Organize File Structure.  Make File Copy into Reusable Service,  Add Proptreis for Messages.
+   * Re- Organize File Structure.  Make File Copy into Reusable Service,  Add Properties for Messages. etc.
  - [ ] **Add File Upload Progress Bar** *Technique: Add 2nd Servlet/Rest Client with Progress info for Ajax Calls*
   * **Technique 1 Progress Endpoint** Implement ProgressListener and override update() with a  HttpSession attribute with the status %
     * Use Apache Commons FileUpload package
