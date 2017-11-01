@@ -22,6 +22,8 @@
   >git clone  https://github.com/gskudlarick/videouploads.git
   >cd my-proj
 ```
+ * Setup mysql db.   https://dev.mysql.com/doc/mysql-getting-started/en/#mysql-getting-started-installing
+   * Install mamp for quick setup:  https://www.mamp.info/en/
  * Run the *sql.ddl* in src/main/resources
  * Update *application.properties* file for db connection and directories.
 ``` sh
