@@ -5,13 +5,13 @@
 ## Test URLS
 
 
-* **Server Side Rendering** - http://159.203.192.45:8080/
+* **Server Side Rendering** - [Sprinb Boot Server App Login Page](http://159.203.192.45:8080/)
 * **username/password** - *api  api100*
-* **Angular Client**- http://159.203.192.45/vz/ 
+* **Angular Client**-  [Angular 2 API Rest Client](http://159.203.192.45/vz/ )
 * **UPLOADED ASSETS** -       
   * My DigitalOcean Server. I Didnt'have tiem to set up AWS S3*
-  * https://exsracing.com/vz/ASSETS/
-  *   https://exsracing.com/vz/ASSETS/HLS/
+  * [Processed Video Assets](https://exsracing.com/vz/ASSETS/)
+  * [Processed HLS Assets](https://exsracing.com/vz/ASSETS/HLS/)   (.m3u8, .ts) files
 
 
 ## To Build and Run the project
@@ -22,10 +22,9 @@
   >git clone  https://github.com/gskudlarick/videouploads.git
   >cd my-proj
 ```
- * Setup mysql db.   https://dev.mysql.com/doc/mysql-getting-started/en/#mysql-getting-started-installing
-   * Install mamp for quick setup:  https://www.mamp.info/en/
- * Run the *sql.ddl* in src/main/resources
- * Update *application.properties* file for withyou db connection info and directories structure
+ * Setup mysql db.   [MySql Installation](https://dev.mysql.com/doc/mysql-getting-started/en/#mysql-getting-started-installing)
+   * Install mamp for quick setup:  [MAMP Install](https://www.mamp.info/en/)
+ * Update [application.properties](https://github.com/gskudlarick/videouploads/blob/master/src/main/resources/application.properties) file for withyou db connection info and directories structure
   ``` sh
     spring.datasource.url=jdbc:mysql://localhost:8889/my_db
     spring.datasource.username=un
@@ -39,6 +38,7 @@
     transcoding.pipeline.asset.list=_sprite.jpg,_thumbs.json,.mp4
     ...  See complete list at bottom of readme.
  ```   
+ * Run the [sql.ddl](https://github.com/gskudlarick/videouploads/blob/master/src/main/resources/ddl.sql) in src/main/resources.  Note, the videos db table is created by JPA during startup based on settings in the properties file.  e.g. [application.properties](https://github.com/gskudlarick/videouploads/blob/master/src/main/resources/application.properties)   *spring.jpa.hibernate.ddl-auto=create*
  * Build and run the project:
 ``` sh
   >mvn clean package
