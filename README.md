@@ -1,6 +1,6 @@
 # Video Upload POC
 
-
+![alt text](https://help.github.com/assets/images/site/be-social.gif)
 
 ## Test URLS
 
@@ -16,15 +16,18 @@
 
 ## To Build and Run the project
 
-```sh
- git clone  https://github.com/gskudlarick/videouploads.git
- ```
+* Basic Technique used for creating Repo in Root.
+``` sh
+  >mkdir my-proj
+  >git clone  https://github.com/gskudlarick/videouploads.git
+  >cd my-proj
+```
  * Run the *sql.ddl* in src/main/resources
  * Update *application.properties* file for db connection and directories.
- ```
- mvn clean package
- java -jar target/gs-securing-web-0.1.0.ja 
-  ```
+``` sh
+  >mvn clean package
+  >java -jar target/gs-securing-web-0.1.0.java
+```
  * Test at   __http://localhost:8080__
  
  
