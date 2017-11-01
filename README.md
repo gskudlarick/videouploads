@@ -11,7 +11,7 @@
 * **Angular Client**-  [Angular 2 API Rest Client](http://159.203.192.45/vz/ )
   * Beginning of SPI.  Will update when time permits.  Specifically:  Create [VideoJS](https://github.com/videojs/video.js) player to play the uploaded assets.
 * **UPLOADED ASSETS** -       
-  * My DigitalOcean Server. I Didnt'have tiem to set up AWS S3*
+  * DigitalOcean Server.  Will send to AWS S3 when time permits.
   * [Processed Video Assets](https://exsracing.com/vz/ASSETS/)
   * [Processed HLS Assets](https://exsracing.com/vz/ASSETS/HLS/)   (.m3u8, .ts) files
 
