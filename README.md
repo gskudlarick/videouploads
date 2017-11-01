@@ -43,7 +43,7 @@
   * **Technique 2 Web Sockets** Use Java API for WebSocket (JSR 356) to communicate with JavaScript Client Pop up
     * Similar to chat implementation.  Use JavaScript WebSockets Api on client side.  Jquery Popup, or Angular.
  * **Technique 3 Job/Workflow Service** Create Data driven Job Service.  
-    *  **Scales for large jobs**, which can run in background,  then update client via status (email, txt, websocket etc.) 
+    *  **Scales for large jobs**, which can run in background,  then update client status via messaging. (email, txt, websocket etc.) 
     * Server updates jobs_tbl, and workflow_table in DB.  Uses workflow_id, job_id.
     * File Upload Controller creates a new job for Video Prcessing.
     * File Upload Controler creates a Workflow with the following steps:  
