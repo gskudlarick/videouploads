@@ -25,7 +25,21 @@
  * Setup mysql db.   https://dev.mysql.com/doc/mysql-getting-started/en/#mysql-getting-started-installing
    * Install mamp for quick setup:  https://www.mamp.info/en/
  * Run the *sql.ddl* in src/main/resources
- * Update *application.properties* file for db connection and directories.
+ * Update *application.properties* file for withyou db connection info and directories structure
+  ``` sh
+    spring.datasource.url=jdbc:mysql://localhost:8889/my_db
+    spring.datasource.username=un
+    spring.datasource.password=pw
+    api.config.uploaddir=upload-dir
+    api.config.ffprobe.bin=/usr/bin/ffprobe
+    api.config.ffmpeg.bin=/usr/bin/ffmpeg
+    api.config.python.bin=/usr/bin/python
+    transcoding.upload.dir=upload-dir/
+    transcoding.pipeline.processing.list=_sprite.jpg,_thumbs.json
+    transcoding.pipeline.asset.list=_sprite.jpg,_thumbs.json,.mp4
+    ...  See complete list at bottom of readme.
+ ```   
+ * Build and run the project:
 ``` sh
   >mvn clean package
   >java -jar target/gs-securing-web-0.1.0.java
@@ -148,6 +162,43 @@
  }
   
   ```
+  
+  ## complete list of properties file changes.
+``` sh
+spring.datasource.url=jdbc:mysql://localhost:8889/my_db
+spring.datasource.username=un
+spring.datasource.password=pw
+api.config.uploaddir=/upload
+api.config.ffprobe.bin=/usr/bin/ffprobe
+api.config.ffmpeg.bin=/usr/bin/ffmpeg
+api.config.python.bin=/usr/bin/python
+
+#Image Magick
+api.config.mogrify=/usr/bin/mogrify
+api.config.identify=/usr/bin/identify
+api.config.montage=/usr/bin/montage
+
+#Logging
+logging.file=logs/spring-boot-logging.log
+spring.output.ansi.enabled=always
+
+#
+# Support for TRANSCODING_PIPELINE file processing
+# -keep it configuration based.
+#
+transcoding.assets.dest.dir=/var/www/html/XX/ASSETS/
+transcoding.thumbs.processing.dir=thumbs/
+transcoding.upload.dir=upload-dir/
+transcoding.pipeline.processing.list=_sprite.jpg,_thumbs.json
+transcoding.pipeline.asset.list=_sprite.jpg,_thumbs.json,.mp4
+
+
+# HLS Processing. prototype. **REFACTOR ASAP** after you try .mpd and see pattern.
+transcoding.assets.dest.dir.hls=/var/www/html/XX/ASSETS/HLS/
+transcoding.hls.processing.dir=hls/
+
+transcoding.output.base.url=https://myserver.com/XX/ASSETS/
+ ```   
  
 
 
