@@ -4,6 +4,7 @@
 /target/**
 .classpath
 .project
+*.log
 .settings/
 .maven/
 target/
