@@ -8,3 +8,6 @@
 .settings/
 .maven/
 target/
+/thumbs
+/hls
+/upload-dir

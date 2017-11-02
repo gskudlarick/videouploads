@@ -50,7 +50,7 @@ public class FfmpegPosterProcessor extends VideoProcessor {
 	    commands.add("-an"); 
 	    
 	    commands.add("-ss"); 
-	    commands.add("0");
+	    commands.add("5");
 	    
 	    commands.add("-f");
 	    commands.add("mjpeg");
