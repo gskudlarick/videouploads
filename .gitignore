@@ -2,12 +2,10 @@
 
 
 /target/**
-.classpath
 .project
 *.log
 .settings/
 .maven/
 target/
 /thumbs
-/hls
 /upload-dir

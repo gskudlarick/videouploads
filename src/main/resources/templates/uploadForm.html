@@ -1,178 +1,134 @@
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-     <title>VZ Video Demo</title>
+  <head>
+    <title>VZ Video Demo</title>
 
-<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> </link>
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> </link>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-<style>
-ul.greg li {
- font-size:20px;
- color:#777;
- margin:20px;
- }
- 
-h2.greg {
-	text-align:center;
-	margin:30px;
-}
-
-input {
-	margin:20px;
-}
-form {
-  padding:0 200px;
-}
-
-div.greg {
-margin:auto;
-width:800px;}
+ <style>
+	ul.greg li {
+	  font-size:20px;
+	  color:#777;
+	  margin:20px;
+	}
+	
+	h2.greg {
+	  text-align:center;
+	  margin:30px;
+	}
+	
+	input {
+	  margin:20px;
+	}
+	form {
+	  padding:0 200px;
+	}
+	
+	div.greg {
+	  margin:auto;
+	  width:800px;
+	}
 
 </style>
-
-
-<script>
-
-
+ <script>
+ console.log('in uploadForm.html');
 </script>
 
-</head>
-<body>
-  
- <nav  class="navbar navbar-inverse ">
-       <div  class="container-fluid">
-         <div  class="navbar-header">
-           <a href="/home" class="navbar-brand" style="cursor:pointer; text-transform:Capatilize;"><span class="glyphicon glyphicon-film"></span> Video Uploads Demo</a>
-         </div>
-         
-         <div  class="navbar-default">
-           <ul  class="nav navbar-nav">
-             <li><a > <span class="glyphicon glyphicon-wrench"></span>  Admin &amp; Test</a></li>
-             <li class="active" ><a href="/upload" > <span class="glyphicon glyphicon-upload"></span> Upload </a></li>
-             <li><a href="http://159.203.192.45/player.html" ><span class="glyphicon glyphicon-hd-video"></span> Video Player</a></li>
-             <li><a href="http://159.203.192.45/vz"  target="_blank"><span class="glyphicon glyphicon-link"></span> Angular Client</a></li>
-           </ul>
-     
-       
-    <div th:switch="${#httpServletRequest.remoteUser}"> 
-                    <form th:case="null"  th:action="@{/login}" method="post"  class="navbar-form navbar-right">
-             <div  class="form-group">
-               <input  class="form-control" placeholder="Username" name="username" type="text"></input>
-             </div>
-             <div  class="form-group">
-               <input  class="form-control" placeholder="Password" type="password" name="password"></input>
-             </div>
-      <!--        <button  class="btn btn-success" type="button">Sign in</button> -->
-       <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-log-in"></span> Login </button>
-    <!--   <a href="/login" class="btn btn-success" role="button">Link Button</a> -->
-           </form>
-           
-           <form id="form1" th:case="*" th:action="@{/logout}" method="post"  class="navbar-form navbar-right">
-      <!--        <button  class="btn btn-success" type="button">Sign in</button> -->
-      
+  </head>
+  <body>
+    <nav  class="navbar navbar-inverse ">
+      <div  class="container-fluid">
+        <div  class="navbar-header">
+          <a href="/home" class="navbar-brand" style="cursor:pointer; text-transform:Capatilize;"><span class="glyphicon glyphicon-film"></span> Video Uploads Demo</a>
+        </div>
+        <div  class="navbar-default">
+          <ul  class="nav navbar-nav">
+            <li><a > <span class="glyphicon glyphicon-wrench"></span>  Admin &amp; Test</a></li>
+            <li class="active" ><a href="/upload" > <span class="glyphicon glyphicon-upload"></span> Upload </a></li>
+            <li><a href="http://159.203.192.45/player.html" ><span class="glyphicon glyphicon-hd-video"></span> Video Player</a></li>
+            <li><a href="http://159.203.192.45/vz"  target="_blank"><span class="glyphicon glyphicon-link"></span> Angular Client</a></li>
+          </ul>
+          <div th:switch="${#httpServletRequest.remoteUser}"> 
+            <form th:case="null"  th:action="@{/login}" method="post"  class="navbar-form navbar-right">
+              <div  class="form-group">
+                <input  class="form-control" placeholder="Username" name="username" type="text"></input>
+              </div>
+              <div  class="form-group">
+                <input  class="form-control" placeholder="Password" type="password" name="password"></input>
+              </div>
+              <!--        <button  class="btn btn-success" type="button">Sign in</button> -->
+              <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-log-in"></span> Login </button>
+              <!--   <a href="/login" class="btn btn-success" role="button">Link Button</a> -->
+            </form>
+            <form id="form1" th:case="*" th:action="@{/logout}" method="post"  class="navbar-form navbar-right">
+              <!--        <button  class="btn btn-success" type="button">Sign in</button> -->
+              <!--  
+                <button  style="text-transform: uppercase;" th:inline="text" type="button" class="btn btn-primary ">
+                <span  class="glyphicon glyphicon-user"></span>   [[${#httpServletRequest.remoteUser}]] 
+                </button>-->
+                <button  type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-log-out"></span>  Logout </button> 
+                <!--   <a href="/login" class="btn btn-success" role="button">Link Button</a> -->
+            </form>
+            <ul th:if="${#httpServletRequest.remoteUser}" class="nav navbar-nav navbar-right">
+              <li style="text-transform: capitalize;" th:inline="text"><a href="#"><span class="glyphicon glyphicon-user"></span> [[${#httpServletRequest.remoteUser}]]</a></li>
+            </ul> 
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="greg" >
+      <h4 style="text-align:center" th:if="${message}">
+        <div th:text="${message}" />
+
+          <h4 style="text-align:center">	<a href="https://exsracing.com/vz/ASSETS/" class="btn btn-primary" role="button">Processed Files</a> </h4>
+          <h4 style="text-align:center">	 <a href="http://159.203.192.45/vz" class="btn btn-primary" role="button">View Data</a></h4>
+          <h4 style="text-align:center">	    <a  class="btn btn-primary" href="http://159.203.192.45/player.html" role="button"><span class="glyphicon glyphicon-hd-video"></span> Video Player</a>           </h4>
+      </h4>
+      <h2 class="greg">
+        Upload a file here.  
+      </h2>
+      <ul class="greg">
+        <li>Files are limited to 10 minutes, and only MP4.</li>
+        <li>It takes about a minute to process a 5 minute file due to the HLS and low performance server.</li>
+        <li>Standard processing creates file information from ffprobe. This info can be seen by clicking the Angular Client.</li>
+        <li>It creates: poster.jpg, sprite.jpg for thumbnail scrubbing, sprite.json (for thumbs), and an HLS file.</li>
+        <li>You can Play the Video and  see the final files at the Links below.</li>
+        <li><a href="https://exsracing.com/vz/ASSETS/" class="btn btn-primary" role="button">UpLoaded Assets</a> </li>
+        <li><a href="http://159.203.192.45:8080/videos" class="btn btn-primary" role="button">Meta Data</a> </li>
+      </ul>
+      <h3></h3>
+      <div>
+        <form method="POST" enctype="multipart/form-data" action="/upload">
+          <table>
+            <tr>
+              <td>File to upload:</td>
+              <td><input type="file" name="file" /></td>
+            </tr>
+            <tr>
+              <td>Friendly Name:</td>
+              <td><input type="text" name="name" /></td>
+            </tr>
+            <tr>
+              <td>Description:</td>
+              <td><input type="text" name="description" /></td>
+            </tr>
+            <!--<p>Id: <input type="text" th:field="*{id}" /></p>-->
+            <tr>
+              <td></td>
+              <td><input type="submit" value="Upload" /></td>
+            </tr>
+          </table>
+        </form>
+      </div>
       <!--  
-      <button  style="text-transform: uppercase;" th:inline="text" type="button" class="btn btn-primary ">
-          <span  class="glyphicon glyphicon-user"></span>   [[${#httpServletRequest.remoteUser}]] 
-        </button>-->
-       <button  type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-log-out"></span>  Logout </button> 
-
-    <!--   <a href="/login" class="btn btn-success" role="button">Link Button</a> -->
-           </form>
-    
-  
-           
-                <ul th:if="${#httpServletRequest.remoteUser}" class="nav navbar-nav navbar-right">
-      <li style="text-transform: capitalize;" th:inline="text"><a href="#"><span class="glyphicon glyphicon-user"></span> [[${#httpServletRequest.remoteUser}]]</a></li>
-    </ul> 
-           
-         
-
-           </div>
-     
-     
-         </div>
-     
-     
-       </div>
-     </nav>
-    
-    
-    
-	<div class="greg" >
-
-		<h4 style="text-align:center" th:if="${message}">
-			<div th:text="${message}" />
-		
-			<h4 style="text-align:center">	<a href="https://exsracing.com/vz/ASSETS/" class="btn btn-primary" role="button">Processed Files</a> </h4>
-			<h4 style="text-align:center">	 <a href="http://159.203.192.45/vz" class="btn btn-primary" role="button">View Data</a></h4>
-      <h4 style="text-align:center">	    <a  class="btn btn-primary" href="http://159.203.192.45/player.html" role="button"><span class="glyphicon glyphicon-hd-video"></span> Video Player</a>           </h4>
-		</h4>
-
-
-
-		
-				<h2 class="greg">
-			Upload a file here.  
-		</h2>
-		
-<ul class="greg">
-
-		<li>Files are limited to 10 minutes, and only MP4.</li>
-		<li>It takes about a minute to process a 5 minute file due to the HLS and low performance server.</li>
-			<li>Standard processing creates file information from ffprobe. This info can be seen by clicking the Angular Client.</li>
-		<li>It creates: poster.jpg, sprite.jpg for thumbnail scrubbing, sprite.json (for thumbs), and an HLS file.</li>
-		
-				<li>You can Play the Video and  see the final files at the Links below.</li>
-						<li><a href="https://exsracing.com/vz/ASSETS/" class="btn btn-primary" role="button">UpLoaded Assets</a> </li>
-					
-						<li><a href="http://159.203.192.45:8080/videos" class="btn btn-primary" role="button">Meta Data</a> </li>
-
-
-		</ul>
-	
-
-		
-		
-		
-	
-	<h3></h3>
-
-		<div>
-			<form method="POST" enctype="multipart/form-data" action="/upload">
-				<table>
-					<tr>
-						<td>File to upload:</td>
-						<td><input type="file" name="file" /></td>
-					</tr>
-					<tr>
-						<td>Friendly Name:</td>
-						<td><input type="text" name="name" /></td>
-					</tr>
-					<tr>
-						<td>Description:</td>
-						<td><input type="text" name="description" /></td>
-					</tr>
-
-					<!-- 				<p>Id: <input type="text" th:field="*{id}" /></p>
- -->
-					<tr>
-						<td></td>
-						<td><input type="submit" value="Upload" /></td>
-					</tr>
-				</table>
-			</form>
-		</div>
-		
-		
-<!--  
-		<div>
-			<ul>
-				<li th:each="file : ${files}"><a th:href="${file}"
-					th:text="${file}" /></li>
-			</ul>
-		</div>
--->
-	</div>
-</body>
+        <div>
+        <ul>
+        <li th:each="file : ${files}"><a th:href="${file}"
+        th:text="${file}" /></li>
+        </ul>
+        </div>
+      -->
+        </div>
+  </body>
 </html>
