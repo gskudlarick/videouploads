@@ -95,8 +95,7 @@
  - [ ] **Update UI Video Player to Play Uploaded Videos and Thumbs**
    * I Customized the json output from the transcoding process to work with videojs-thumbnails plugin. https://www.npmjs.com/package/videojs-thumbnails
    * e.g. https://exsracing.com/vz/ASSETS/trailer_thumbs.json
-   * I have this working on another site. http://testplayer.crackle.com/thumbs/chucky2.html **Test the Scrubbing**
-   * It would take me about 4 hours to add some HTML Drop Down controls to Select from uploaded Videos and implement on the test Site.
+   - [x]  ~~It would take me about 4 hours to add some HTML Drop Down controls to Select from uploaded Videos and implement on the test Site.~~  **Done**
 
 ## Some Sample Data Results from Running the Upload
 
