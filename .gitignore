@@ -4,8 +4,10 @@
 /target/**
 .project
 *.log
+.classpath
 .settings/
 .maven/
 target/
-/thumbs
-/upload-dir
+/thumbs/**
+/upload-dir/**
+/hls/**
