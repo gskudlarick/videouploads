@@ -1,45 +1,85 @@
 # Video Upload POC
 
-
+![alt text](https://help.github.com/assets/images/site/be-social.gif)
 
 ## Test URLS
 
 
-* **Server Side Rendering** - http://159.203.192.45:8080/
-* **username/password** - *api  api100*
-* **Angular Client**- http://159.203.192.45/vz/ 
+* **Server Side Rendering** - [Spring Boot Server App Login Page](http://159.203.192.45:8080/) 
+  * **username/password** - *api  api100*
+  * Basic thymeleaf html to show functionality. But Prefer SPA (single page app) when time permits as Server Side rendering skills are a little rusty.  Been doing mostly SPA lately  w/ JQuery/Ajax, Angular, Knockout and React.
+* **Angular Client**-  [Angular 4 API Rest Client](http://159.203.192.45/vz/ )
+  * Beginning of SPI.  Will update when time permits.  Specifically:  Create [VideoJS](https://github.com/videojs/video.js) player to play the uploaded assets.
 * **UPLOADED ASSETS** -       
-  * My DigitalOcean Server. I Didnt'have tiem to set up AWS S3*
-  * https://exsracing.com/vz/ASSETS/
-  *   https://exsracing.com/vz/ASSETS/HLS/
+  * DigitalOcean Server.  Will send to AWS S3 when time permits.
+  * [Processed Video Assets](https://exsracing.com/vz/ASSETS/)
+  * [Processed HLS Assets](https://exsracing.com/vz/ASSETS/HLS/)   (.m3u8, .ts) files
 
 
 ## To Build and Run the project
 
-```sh
- git clone  https://github.com/gskudlarick/videouploads.git
- ```
- * Run the *sql.ddl* in src/main/resources
- * Update *application.properties* file for db connection and directories.
- ```
- mvn clean package
- java -jar target/gs-securing-web-0.1.0.ja 
-  ```
+* In a terminal window:.
+``` sh
+  >mkdir my-proj
+  >git clone  https://github.com/gskudlarick/videouploads.git
+  >cd my-proj
+```
+ * Setup mysql db.   [MySql Installation](https://dev.mysql.com/doc/mysql-getting-started/en/#mysql-getting-started-installing)
+   * Install mamp for quick setup:  [MAMP Install](https://www.mamp.info/en/)
+ * Update [application.properties](https://github.com/gskudlarick/videouploads/blob/master/src/main/resources/application.properties) file for withyou db connection info and directories structure
+  ``` sh
+    spring.datasource.url=jdbc:mysql://localhost:8889/my_db
+    spring.datasource.username=un
+    spring.datasource.password=pw
+    api.config.uploaddir=upload-dir
+    api.config.ffprobe.bin=/usr/bin/ffprobe
+    api.config.ffmpeg.bin=/usr/bin/ffmpeg
+    api.config.python.bin=/usr/bin/python
+    transcoding.upload.dir=upload-dir/
+    transcoding.pipeline.processing.list=_sprite.jpg,_thumbs.json
+    transcoding.pipeline.asset.list=_sprite.jpg,_thumbs.json,.mp4
+    ...  See complete list at bottom of readme.
+ ```   
+ * Run the [sql.ddl](https://github.com/gskudlarick/videouploads/blob/master/src/main/resources/ddl.sql) in src/main/resources.  Note, the videos db table is created by JPA during startup based on settings in the properties file.  e.g. [application.properties](https://github.com/gskudlarick/videouploads/blob/master/src/main/resources/application.properties)   *spring.jpa.hibernate.ddl-auto=create*
+ * Build and run the project:
+``` sh
+  >mvn clean package
+  >java -jar target/gs-securing-web-0.1.0.java
+```
  * Test at   __http://localhost:8080__
  
  
  ## Features to Implement
  - [x] **Clean UI with bootstrap**
+  - [ ] **Use MP4Box to package as MPD and update video js player with videojs-contrib-dash to play DASH**
+  * Install MP4Box, and add to the transcoding pipeline.  e.g. Add DashProcessor.java to the [VideoProcessing Service](https://github.com/gskudlarick/videouploads/tree/master/src/main/java/com/ges/video/service/videoprocessing), and call from the [FileUploadController.java](https://github.com/gskudlarick/videouploads/blob/master/src/main/java/com/ges/video/view/mvc/FileUploadController.java).  **(Re-factor as we add more services).**
+  * Update the test [VideoJS](https://github.com/videojs/video.js) player with a plugin to play MPEG-DASH content. [MPEG-DASH Source Handle](https://github.com/videojs/videojs-contrib-dash)
+  * Add [HLS Plugin](https://github.com/videojs/videojs-contrib-hls) to Video Player.
   - [ ] **Refactor Java Code**
-   * Re- Organize File Structure.  Make File Copy into Reusable Service,  Add Proptreis for Messages.
+   * Re- Organize File Structure.  Make File Copy into Reusable Service,  Add Properties for Messages. etc.
  - [ ] **Add File Upload Progress Bar** *Technique: Add 2nd Servlet/Rest Client with Progress info for Ajax Calls*
-  * Use Apache Commons FileUpload package
-  * Implement ProgressListener and override update() with a  HttpSession attribute with the status %
-  * Create a new Rest endpoint to return the % value in the HttpSession attribute
-  * Create a JavaScript XMLHttpRequest ajax call on window.setInterva(2000)
+  * **Technique 1 Progress Endpoint** Implement ProgressListener and override update() with a  HttpSession attribute with the status %
+    * Use Apache Commons FileUpload package
+    * Create a new Rest endpoint to return the % value in the HttpSession attribute
+    * Create a JavaScript XMLHttpRequest ajax call on window.setInterva(2000)
     * implement callback method to get  % from Restpoint
     * Update the % on a bootstrap DOM progress bar element.
     * Try the newer XHR. ProgressEvent onProgress() and see what kind of data it sends back for multi-part
+  * **Technique 2 Web Sockets** Use Java API for WebSocket (JSR 356) to communicate with JavaScript Client Pop up
+    * Similar to chat implementation.  Use JavaScript WebSockets Api on client side.  Jquery Popup, or Angular.
+ * **Technique 3 Job/Workflow Service** Create Data driven Job Service.  
+    *  **Scales for large jobs**, which can run in background,  then update client status via messaging. (email, txt, websocket etc.) 
+    * Server updates jobs_tbl, and workflow_table in DB.  Uses workflow_id, job_id.
+    * File Upload Controller creates a new job for Video Prcessing.
+    * File Upload Controler creates a Workflow with the following steps:  
+      1.  file upload 
+      2.  ffprobe get file status 
+      3.  thumbs generation  
+      4.  poster generation
+      5.  HLS processing
+    * Server updates status via WebSocket API
+    * Client uses Javascript WebSockets API, and updaet widget, with progress bars for each step in the workflow
+    
  - [ ] **Figure out how to pipe the File Upload multi-part Stream to the ffprobe input**
   * This way we don't have to Upload the file to run ffprobe and get the duration info.
     * Shortcut would be to limit file size using **spring.http.multipart.max-request-size=128MB**
@@ -128,6 +168,43 @@
  }
   
   ```
+  
+  ## complete list of properties file changes.
+``` sh
+spring.datasource.url=jdbc:mysql://localhost:8889/my_db
+spring.datasource.username=un
+spring.datasource.password=pw
+api.config.uploaddir=/upload
+api.config.ffprobe.bin=/usr/bin/ffprobe
+api.config.ffmpeg.bin=/usr/bin/ffmpeg
+api.config.python.bin=/usr/bin/python
+
+#Image Magick
+api.config.mogrify=/usr/bin/mogrify
+api.config.identify=/usr/bin/identify
+api.config.montage=/usr/bin/montage
+
+#Logging
+logging.file=logs/spring-boot-logging.log
+spring.output.ansi.enabled=always
+
+#
+# Support for TRANSCODING_PIPELINE file processing
+# -keep it configuration based.
+#
+transcoding.assets.dest.dir=/var/www/html/XX/ASSETS/
+transcoding.thumbs.processing.dir=thumbs/
+transcoding.upload.dir=upload-dir/
+transcoding.pipeline.processing.list=_sprite.jpg,_thumbs.json
+transcoding.pipeline.asset.list=_sprite.jpg,_thumbs.json,.mp4
+
+
+# HLS Processing. prototype. **REFACTOR ASAP** after you try .mpd and see pattern.
+transcoding.assets.dest.dir.hls=/var/www/html/XX/ASSETS/HLS/
+transcoding.hls.processing.dir=hls/
+
+transcoding.output.base.url=https://myserver.com/XX/ASSETS/
+ ```   
  
 
 
