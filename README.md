@@ -52,6 +52,10 @@
  
  ## Features to Implement
  - [x] **Clean UI with bootstrap**
+ - [x] **Update UI Video Player to Play Uploaded Videos and Thumbs** [Video Player](http://159.203.192.45/player.html)
+   * I Customized the json output from the transcoding process to work with videojs-thumbnails plugin. [VideoJS Thumbs Plugin](https://www.npmjs.com/package/videojs-thumbnails)
+   * e.g. https://exsracing.com/vz/ASSETS/trailer_thumbs.json
+   - [x]  ~~It would take me about 4 hours to add some HTML Drop Down controls to Select from uploaded Videos and implement on the test Site.~~  **Done**
   - [ ] **Use MP4Box to package as MPD and update video js player with videojs-contrib-dash to play DASH**
   * Install MP4Box, and add to the transcoding pipeline.  e.g. Add DashProcessor.java to the [VideoProcessing Service](https://github.com/gskudlarick/videouploads/tree/master/src/main/java/com/ges/video/service/videoprocessing), and call from the [FileUploadController.java](https://github.com/gskudlarick/videouploads/blob/master/src/main/java/com/ges/video/view/mvc/FileUploadController.java).  **(Re-factor as we add more services).**
   * Update the test [VideoJS](https://github.com/videojs/video.js) player with a plugin to play MPEG-DASH content. [MPEG-DASH Source Handle](https://github.com/videojs/videojs-contrib-dash)
@@ -92,10 +96,6 @@
      * Currently does not encrypt password. Add Login Form and use Use *BCryptPasswordEncoder()*.
      * Update code in *WebSecurityConfig* to update  *config(HttpSecurity)...* and *CorsFilter.java*
      * Test and ensure CORS, CSRF working and locked down for Rest Clients.  
- - [ ] **Update UI Video Player to Play Uploaded Videos and Thumbs**
-   * I Customized the json output from the transcoding process to work with videojs-thumbnails plugin. https://www.npmjs.com/package/videojs-thumbnails
-   * e.g. https://exsracing.com/vz/ASSETS/trailer_thumbs.json
-   - [x]  ~~It would take me about 4 hours to add some HTML Drop Down controls to Select from uploaded Videos and implement on the test Site.~~  **Done**
 
 ## Some Sample Data Results from Running the Upload
 
