@@ -12,28 +12,28 @@
  <nav  class="navbar navbar-inverse ">
        <div  class="container-fluid">
          <div  class="navbar-header">
-           <a href="/home" class="navbar-brand active" style="cursor:pointer; text-transform:Capatilize;"><span class="glyphicon glyphicon-film"></span> Video Uploads Demo</a>
+           <a href="/home" class="navbar-brand active" style="cursor:pointer; text-transform:Capatilize;"><span class="glyphicon glyphicon-film"></span><span th:text="#{header.menu.brand}">D </span></a>
          </div>
          
          <div  class="navbar-default">
            <ul  class="nav navbar-nav">
-             <li><a > <span class="glyphicon glyphicon-wrench"></span>  Admin &amp; Test</a></li>
-             <li><a href="/upload"> <span class="glyphicon glyphicon-upload"></span> Upload </a></li>
-             <li><a href="http://159.203.192.45/player.html" ><span class="glyphicon glyphicon-hd-video"></span> Video Player</a></li>
-             <li><a  href="http://159.203.192.45/vz"   target="_blank"><span class="glyphicon glyphicon-link"></span> Angular Client</a></li>
+             <li><a > <span class="glyphicon glyphicon-wrench"></span><span th:text="#{header.menu.admin}">D </span></a></li>
+             <li><a href="/upload"> <span class="glyphicon glyphicon-upload"></span> <span th:text="#{header.menu.upload}">D </span></a></li>
+             <li><a href="http://159.203.192.45/player.html" ><span class="glyphicon glyphicon-hd-video"></span> <span th:text="#{header.menu.player}">D </span></a></li>
+             <li><a  href="http://159.203.192.45/vz"   target="_blank"><span class="glyphicon glyphicon-link"></span> <span th:text="#{header.menu.angular}">D </span></a></li>
            </ul>
      
        
     <div th:switch="${#httpServletRequest.remoteUser}"> 
                     <form th:case="null"  th:action="@{/login}" method="post"  class="navbar-form navbar-right">
              <div  class="form-group">
-               <input  class="form-control" placeholder="Username" name="username" type="text"></input>
+               <input  class="form-control" th:placeholder="#{header.menu.username}" name="username" type="text"></input>
              </div>
              <div  class="form-group">
-               <input  class="form-control" placeholder="Password" type="password" name="password"></input>
+               <input  class="form-control" th:placeholder="#{header.menu.password}" type="password" name="password"></input>
              </div>
       <!--        <button  class="btn btn-success" type="button">Sign in</button> -->
-       <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-log-in"></span> Login </button>
+       <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-log-in"></span> <span th:text="#{header.menu.login}">D </span></button>
     <!--   <a href="/login" class="btn btn-success" role="button">Link Button</a> -->
            </form>
            
@@ -44,7 +44,7 @@
       <button  style="text-transform: uppercase;" th:inline="text" type="button" class="btn btn-primary ">
           <span  class="glyphicon glyphicon-user"></span>   [[${#httpServletRequest.remoteUser}]] 
         </button>-->
-       <button  type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-log-out"></span>  Logout </button> 
+       <button  type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-log-out"></span>  <span th:text="#{header.menu.logout}">D </span></button> 
 
     <!--   <a href="/login" class="btn btn-success" role="button">Link Button</a> -->
            </form>
@@ -81,10 +81,10 @@
                    <p>Your user agent does not support the HTML5 Video element.</p>
            </video>
      -->
-           
-             <h4 style="text-align:center">Play uploaded Videos in VideoJS Player which has Plugin to test Thumbnail scrubbing. </h4>
+             <h3 style="text-align:center" th:text="#{home.message.greeting}">Placeholder Greeting</h3>
+             <h4 style="text-align:center" th:text="#{home.message.play}">Play Videos in VideoJS Player which has Plugin to test Thumbnail scrubbing. </h4>
              <div class="g-center" style="text-align:center">
-<a class="btn btn-primary" href="http://159.203.192.45/player.html" role="button"><span class="glyphicon glyphicon-hd-video"></span> Video Player</a>           
+               <a class="btn btn-primary" href="http://159.203.192.45/player.html" role="button"><span class="glyphicon glyphicon-hd-video"></span><span th:text="#{home.button.player}">D </span></a>           
              </div>
            </div>
      
@@ -113,5 +113,7 @@
         <p>Click <a th:href="@{/upload}">here</a> to see a Secure ADMIN upload.</p>
         <p>Click <a th:href="@{/dummy}">here</a> to see a Non Secure Video Player.</p>
         -->
+        
+        
     </body>
 </html>
