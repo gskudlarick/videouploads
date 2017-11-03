@@ -61,7 +61,9 @@
   * Update the test [VideoJS](https://github.com/videojs/video.js) player with a plugin to play MPEG-DASH content. [MPEG-DASH Source Handle](https://github.com/videojs/videojs-contrib-dash)
   * Add [HLS Plugin](https://github.com/videojs/videojs-contrib-hls) to Video Player.
   - [ ] **Refactor Java Code**
-   * Re- Organize File Structure.  Make File Copy into Reusable Service,  Add Properties for Messages. etc.
+   * Re- Organize File Structure.  Make File Copy into Reusable Service.
+  - [x] **Implement i18n Internationalization on Home Page** Add LocaleResolver, LocaleChangeInterceptor and messages_xx.properties files
+    * [French](http://159.203.192.45:8080/home?lang=fr), [German](http://159.203.192.45:8080/home?lang=de), [Spanish](http://159.203.192.45:8080/home?lang=es)
  - [ ] **Add File Upload Progress Bar** *Technique: Add 2nd Servlet/Rest Client with Progress info for Ajax Calls*
   * **Technique 1 Solution Design: Progress Endpoint** Implement ProgressListener and override update() with a  HttpSession attribute with the status %
     * Use Apache Commons FileUpload package
