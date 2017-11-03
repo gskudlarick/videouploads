@@ -52,6 +52,10 @@
  
  ## Features to Implement
  - [x] **Clean UI with bootstrap**
+ - [x] **Update UI Video Player to Play Uploaded Videos and Thumbs** [Video Player](http://159.203.192.45/player.html)
+   * I Customized the json output from the transcoding process to work with videojs-thumbnails plugin. [VideoJS Thumbs Plugin](https://www.npmjs.com/package/videojs-thumbnails)
+   * e.g. https://exsracing.com/vz/ASSETS/trailer_thumbs.json
+   - [x]  ~~It would take me about 4 hours to add some HTML Drop Down controls to Select from uploaded Videos and implement on the test Site.~~  **Done**
   - [ ] **Use MP4Box to package as MPD and update video js player with videojs-contrib-dash to play DASH**
   * Install MP4Box, and add to the transcoding pipeline.  e.g. Add DashProcessor.java to the [VideoProcessing Service](https://github.com/gskudlarick/videouploads/tree/master/src/main/java/com/ges/video/service/videoprocessing), and call from the [FileUploadController.java](https://github.com/gskudlarick/videouploads/blob/master/src/main/java/com/ges/video/view/mvc/FileUploadController.java).  **(Re-factor as we add more services).**
   * Update the test [VideoJS](https://github.com/videojs/video.js) player with a plugin to play MPEG-DASH content. [MPEG-DASH Source Handle](https://github.com/videojs/videojs-contrib-dash)
@@ -59,16 +63,16 @@
   - [ ] **Refactor Java Code**
    * Re- Organize File Structure.  Make File Copy into Reusable Service,  Add Properties for Messages. etc.
  - [ ] **Add File Upload Progress Bar** *Technique: Add 2nd Servlet/Rest Client with Progress info for Ajax Calls*
-  * **Technique 1 Progress Endpoint** Implement ProgressListener and override update() with a  HttpSession attribute with the status %
+  * **Technique 1 Solution Design: Progress Endpoint** Implement ProgressListener and override update() with a  HttpSession attribute with the status %
     * Use Apache Commons FileUpload package
     * Create a new Rest endpoint to return the % value in the HttpSession attribute
     * Create a JavaScript XMLHttpRequest ajax call on window.setInterva(2000)
     * implement callback method to get  % from Restpoint
     * Update the % on a bootstrap DOM progress bar element.
     * Try the newer XHR. ProgressEvent onProgress() and see what kind of data it sends back for multi-part
-  * **Technique 2 Web Sockets** Use Java API for WebSocket (JSR 356) to communicate with JavaScript Client Pop up
+  * **Technique 2 Solution Deisgn:  Web Sockets** Use Java API for WebSocket (JSR 356) to communicate with JavaScript Client Pop up
     * Similar to chat implementation.  Use JavaScript WebSockets Api on client side.  Jquery Popup, or Angular.
- * **Technique 3 Job/Workflow Service** Create Data driven Job Service.  
+ * **Technique 3  Solution Design: Job/Workflow Service** Create Data driven Job Service.  
     *  **Scales for large jobs**, which can run in background,  then update client status via messaging. (email, txt, websocket etc.) 
     * Server updates jobs_tbl, and workflow_table in DB.  Uses workflow_id, job_id.
     * File Upload Controller creates a new job for Video Prcessing.
@@ -92,11 +96,6 @@
      * Currently does not encrypt password. Add Login Form and use Use *BCryptPasswordEncoder()*.
      * Update code in *WebSecurityConfig* to update  *config(HttpSecurity)...* and *CorsFilter.java*
      * Test and ensure CORS, CSRF working and locked down for Rest Clients.  
- - [ ] **Update UI Video Player to Play Uploaded Videos and Thumbs**
-   * I Customized the json output from the transcoding process to work with videojs-thumbnails plugin. https://www.npmjs.com/package/videojs-thumbnails
-   * e.g. https://exsracing.com/vz/ASSETS/trailer_thumbs.json
-   * I have this working on another site. http://testplayer.crackle.com/thumbs/chucky2.html **Test the Scrubbing**
-   * It would take me about 4 hours to add some HTML Drop Down controls to Select from uploaded Videos and implement on the test Site.
 
 ## Some Sample Data Results from Running the Upload
 
