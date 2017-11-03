@@ -1,40 +1,13 @@
 <html xmlns:th="http://www.thymeleaf.org">
   <head>
-    <title>VZ Video Demo</title>
+    <title>GSX Video Demo</title>
 
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> </link>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
- <style>
-	ul.greg li {
-	  font-size:20px;
-	  color:#777;
-	  margin:20px;
-	}
-	
-	h2.greg {
-	  text-align:center;
-	  margin:30px;
-	}
-	
-	input {
-	  margin:20px;
-	}
-	form {
-	  padding:0 200px;
-	}
-	
-	div.greg {
-	  margin:auto;
-	  width:800px;
-	}
-
-</style>
- <script>
- console.log('in uploadForm.html');
-</script>
-
+    
+   	<link th:href="@{/css/style.css}" rel="stylesheet" />
+    <script type="text/javascript" th:src="@{/js/app.js}" />
   </head>
   <body>
     <nav  class="navbar navbar-inverse ">

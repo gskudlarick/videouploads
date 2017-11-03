@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+ul.greg li {
+	font-size: 20px;
+	color: #777;
+	margin: 20px;
+}
+
+h2.greg {
+	text-align: center;
+	margin: 30px;
+}
+
+input {
+	margin: 20px;
+}
+
+form {
+	padding: 0 200px;
+}
+
+div.greg {
+	margin: auto;
+	width: 800px;
+}
