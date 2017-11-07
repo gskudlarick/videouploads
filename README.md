@@ -51,6 +51,7 @@
  
  
  ## Features to Implement
+ - [ ] **Add NGINX API Gateway** [NGINX Api Gateway](https://www.nginx.com/blog/building-microservices-using-an-api-gateway/) Micro Service Deisgn Pattern Plus solution to CORS issues during development.
  - [x] **Clean UI with bootstrap**
  - [x] **Update UI Video Player to Play Uploaded Videos and Thumbs** [Video Player](http://159.203.192.45/player.html)
    * I Customized the json output from the transcoding process to work with videojs-thumbnails plugin. [VideoJS Thumbs Plugin](https://www.npmjs.com/package/videojs-thumbnails)
