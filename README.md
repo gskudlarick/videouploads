@@ -5,7 +5,7 @@
 ## Test URLS
 
 
-* **Server Side Rendering** - [Spring Boot Server App Login Page](http://159.203.192.45:8080/) 
+* **Server Side Rendering** - [Spring Boot Server App Login Page](http://159.203.192.45:8080/)    -- [French](http://159.203.192.45:8080/home?lang=fr), --  [German](http://159.203.192.45:8080/home?lang=de), --  [Spanish](http://159.203.192.45:8080/home?lang=es)
   * **username/password** - *api  api100*
   * Basic thymeleaf html to show functionality. But Prefer SPA (single page app) when time permits as Server Side rendering skills are a little rusty.  Been doing mostly SPA lately  w/ JQuery/Ajax, Angular, Knockout and React.
 * **Video Player**  [Git Hub Repo Player](https://github.com/gskudlarick/player) .. [Video Player](http://159.203.192.45/player.html) Video player will play the uploaded files, along with Thumbnail scrubbing from ffmpeg generated thumbs.
